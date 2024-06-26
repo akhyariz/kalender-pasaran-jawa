@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Des ember"];
   const currentYear = new Date().getFullYear();
-  const referenceDate = new Date(2024, 0, 2); // Fixed reference date (January 2, 2024)
+  const referenceDate = new Date(1900, 0, 1); // Fixed reference date (January 1, 1900)
   const referencePasaran = 0; // Pasaran for the reference date (Legi)
 
   // Populate month and year dropdowns
