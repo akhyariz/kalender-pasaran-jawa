@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalender Pasaran Jawa</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <title>Kalender Pasaran Jawa</title>
 </head>
 <body>
   <div class="container">
     <h1 class="text-center my-4">Kalender Pasaran Jawa</h1>
     <div class="row justify-content-center mb-4">
+      <div class="col-md-1 mb-2 text-center">
+        <button id="prev-month" class="btn btn-secondary">&lt; Prev</button>
+      </div>
       <div class="col-md-3 mb-2">
         <label for="month">Bulan: </label>
         <select id="month" class="form-control"></select>
@@ -18,6 +21,9 @@
       <div class="col-md-3 mb-2">
         <label for="year">Tahun: </label>
         <select id="year" class="form-control"></select>
+      </div>
+      <div class="col-md-1 mb-2 text-center">
+        <button id="next-month" class="btn btn-secondary">Next &gt;</button>
       </div>
     </div>
     <div id="calendar" class="table-responsive"></div>
