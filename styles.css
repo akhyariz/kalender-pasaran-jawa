@@ -5,12 +5,12 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 th, td {
   border: 1px solid black;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
 }
 
@@ -24,15 +24,15 @@ th {
   }
 
   th, td {
-    font-size: 12px; /* Adjust the font size for table headers and cells */
+    font-size: 10px; /* Adjust the font size for table headers and cells */
     padding: 5px;
   }
 
   label {
-    font-size: 14px; /* Adjust the font size for labels */
+    font-size: 12px; /* Adjust the font size for labels */
   }
 
   select {
-    font-size: 14px; /* Adjust the font size for dropdowns */
+    font-size: 12px; /* Adjust the font size for dropdowns */
   }
 }
