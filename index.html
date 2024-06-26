@@ -6,25 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalender Pasaran Jawa</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 10px;
-      text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .control {
-      margin-bottom: 20px;
-    }
-  </style>
 </head>
 <body>
+  <div class="container">
   <h1>Kalender Pasaran Jawa</h1>
   <div class="control">
     <label for="month">Bulan: </label>
@@ -33,6 +17,7 @@
     <select id="year"></select>
   </div>
   <div id="calendar"></div>
+  </div>
   <script src="calendar.js"></script>
 </body>
 </html>
