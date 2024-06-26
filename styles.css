@@ -1,3 +1,7 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -20,6 +24,15 @@ th {
   }
 
   th, td {
+    font-size: 12px; /* Adjust the font size for table headers and cells */
     padding: 5px;
+  }
+
+  label {
+    font-size: 14px; /* Adjust the font size for labels */
+  }
+
+  select {
+    font-size: 14px; /* Adjust the font size for dropdowns */
   }
 }
