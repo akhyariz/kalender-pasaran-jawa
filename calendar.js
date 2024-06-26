@@ -1,37 +1,76 @@
-// Sample JavaScript for generating the calendar
-function generateCalendar(month, year) {
-  const calendarBody = document.getElementById('calendar-body');
-  calendarBody.innerHTML = ''; // Clear previous calendar
+document.addEventListener("DOMContentLoaded", function () {
+  const monthSelect = document.getElementById("month");
+  const yearSelect = document.getElementById("year");
+  const calendarDiv = document.getElementById("calendar");
 
-  // Assume you have a function to get the days in a month and their Pasaran
-  const daysInMonth = getDaysInMonth(month, year);
+  const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Des ember"];
+  const currentYear = new Date().getFullYear();
 
-  let date = 1;
-  for (let i = 0; i < 6; i++) {
-    const row = document.createElement('tr');
+  // Populate month and year dropdowns
+  months.forEach((month, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.text = month;
+    monthSelect.appendChild(option);
+  });
 
-    for (let j = 0; j < 7; j++) {
-      const cell = document.createElement('td');
-      if (date <= daysInMonth.length) {
-        const dateSpan = document.createElement('span');
-        dateSpan.className = 'date';
-        dateSpan.innerText = date;
-
-        const pasaranSpan = document.createElement('span');
-        pasaranSpan.className = 'pasaran';
-        pasaranSpan.innerText = daysInMonth[date - 1].pasaran; // Assuming pasaran is part of your data
-
-        cell.appendChild(dateSpan);
-        cell.appendChild(document.createElement('br'));
-        cell.appendChild(pasaranSpan);
-        date++;
-      }
-      row.appendChild(cell);
-    }
-
-    calendarBody.appendChild(row);
+  for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+    const option = document.createElement("option");
+    option.value = year;
+    option.text = year;
+    yearSelect.appendChild(option);
   }
-}
 
-// Call generateCalendar with the current month and year to initialize
-generateCalendar(new Date().getMonth(), new Date().getFullYear());
+  monthSelect.value = new Date().getMonth();
+  yearSelect.value = currentYear;
+
+  function generateCalendar(month, year) {
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const pasaran = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
+    let html = `<table class="table table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>Ahad</th>
+                      <th>Senin</th>
+                      <th>Selasa</th>
+                      <th>Rabu</th>
+                      <th>Kamis</th>
+                      <th>Jumat</th>
+                      <th>Sabtu</th>
+                    </tr>
+                  </thead>
+                  <tbody>`;
+
+    let date = 1;
+    for (let i = 0; i < 6; i++) {
+      html += "<tr>";
+      for (let j = 0; j < 7; j++) {
+        if (i === 0 && j < firstDay) {
+          html += "<td></td>";
+        } else if (date > daysInMonth) {
+          break;
+        } else {
+          const pasaranDay = pasaran[(date - 1) % 5];
+          html += `<td>${date}<br><small>${pasaranDay}</small></td>`;
+          date++;
+        }
+      }
+      html += "</tr>";
+    }
+    html += "</tbody></table>";
+
+    calendarDiv.innerHTML = html;
+  }
+
+  monthSelect.addEventListener("change", () => {
+    generateCalendar(parseInt(monthSelect.value), parseInt(yearSelect.value));
+  });
+
+  yearSelect.addEventListener("change", () => {
+    generateCalendar(parseInt(monthSelect.value), parseInt(yearSelect.value));
+  });
+
+  generateCalendar(new Date().getMonth(), new Date().getFullYear());
+});
