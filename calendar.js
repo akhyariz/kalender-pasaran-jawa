@@ -53,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
           break;
         } else {
           const pasaranDay = pasaran[(date - 1) % 5];
-          html += `<td>${date}<br><small>${pasaranDay}</small></td>`;
+          const cellClass = j === 0 ? 'class="text-danger"' : '';
+          html += `<td ${cellClass}>${date}<br><small>${pasaranDay}</small></td>`;
           date++;
         }
       }
