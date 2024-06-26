@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let html = `<table class="table table-bordered">
                   <thead class="thead-light">
                     <tr>
-                      <th>Ahad</th>
+                      <th class="text-danger">Ahad</th>
                       <th>Senin</th>
                       <th>Selasa</th>
                       <th>Rabu</th>
