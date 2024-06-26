@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    const pasaran = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
+    const pasaran = [ "Wage", "Kliwon", "Legi", "Pahing", "Pon",];
     let html = `<table class="table table-bordered">
                   <thead class="thead-light">
                     <tr>
