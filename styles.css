@@ -45,6 +45,10 @@ th {
 }
 
 @media (max-width: 600px) {
+  .container {
+    padding: 0 10px;
+  }
+
   th, td {
     padding: 5px;
   }
@@ -57,5 +61,11 @@ th {
 
   label, select {
     margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 24px;
   }
 }
