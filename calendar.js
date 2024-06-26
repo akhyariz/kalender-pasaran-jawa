@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    const pasaran = ["Pon", "Wage", "Kliwon", "Legi", "Pahing"];
+    const pasaran = ["Pahing", "Pon", "Wage", "Kliwon", "Legi"];
     let html = `<table class="table table-bordered">
                   <thead class="thead-light">
                     <tr>
