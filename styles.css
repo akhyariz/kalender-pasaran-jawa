@@ -20,6 +20,7 @@ th {
 
 #prev-month, #next-month {
   margin: 0 5px;
+  width: 100px;
 }
 
 @media (max-width: 480px) {
@@ -43,5 +44,6 @@ th {
   #prev-month, #next-month {
     margin: 5px 0;
     font-size: 12px; /* Adjust the font size for buttons */
+    width: 100%; /* Full width in mobile view */
   }
 }
