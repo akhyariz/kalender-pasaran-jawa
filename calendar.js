@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           const currentDate = new Date(year, month, date);
           const daysDifference = Math.floor((currentDate - referenceDate) / (1000 * 60 * 60 * 24));
-          const pasaranDay = pasaran[(referencePasaran + (daysDifference % 5) + 5) % 5]; // Adjust for negative modulus
+          const pasaranDay = pasaran[(referencePasaran + daysDifference) % 5];
           const cellClass = j === 0 ? 'class="text-danger"' : '';
           html += `<td ${cellClass}>${date}<br><small>${pasaranDay}</small></td>`;
           date++;
