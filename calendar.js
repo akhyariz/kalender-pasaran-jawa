@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     monthSelect.appendChild(option);
   });
 
-  for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+  for (let year = currentYear - 2; year <= currentYear + 2; year++) {
     const option = document.createElement("option");
     option.value = year;
     option.text = year;
