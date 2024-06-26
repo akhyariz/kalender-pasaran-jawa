@@ -5,17 +5,26 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 th, td {
   border: 1px solid black;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
 }
 
 th {
   background-color: #f2f2f2;
+}
+
+.date {
+  font-size: 16px;
+}
+
+.pasaran {
+  font-size: 12px;
+  color: #888; /* Lighter color for Pasaran days */
 }
 
 @media (max-width: 480px) {
@@ -24,15 +33,23 @@ th {
   }
 
   th, td {
-    font-size: 12px; /* Adjust the font size for table headers and cells */
+    font-size: 12px; /* Base font size for table headers and cells */
     padding: 5px;
   }
 
+  .date {
+    font-size: 12px; /* Adjusted font size for dates on mobile */
+  }
+
+  .pasaran {
+    font-size: 8px; /* Adjusted font size for Pasaran on mobile */
+  }
+
   label {
-    font-size: 14px; /* Adjust the font size for labels */
+    font-size: 10px; /* Adjusted font size for labels */
   }
 
   select {
-    font-size: 14px; /* Adjust the font size for dropdowns */
+    font-size: 10px; /* Adjusted font size for dropdowns */
   }
 }
