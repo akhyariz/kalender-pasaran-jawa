@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function populateYearSelect() {
     const currentYear = new Date().getFullYear();
-    for (let i = currentYear - 50; i <= currentYear + 50; i++) {
+    for (let i = currentYear - 5; i <= currentYear + 5; i++) {
       const option = document.createElement('option');
       option.value = i;
       option.text = i;
