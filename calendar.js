@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Des ember"];
   const currentYear = new Date().getFullYear();
+  const referenceDate = new Date(2024, 0, 2); // Fixed reference date (January 2, 2024)
+  const referencePasaran = 0; // Pasaran for the reference date (Legi)
 
   // Populate month and year dropdowns
   months.forEach((month, index) => {
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    const pasaran = [ "Wage", "Kliwon", "Legi", "Pahing", "Pon",];
+    const pasaran = ["Pon", "Wage", "Kliwon", "Legi", "Pahing"];
     let html = `<table class="table table-bordered">
                   <thead class="thead-light">
                     <tr>
@@ -52,7 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (date > daysInMonth) {
           break;
         } else {
-          const pasaranDay = pasaran[(date - 1) % 5];
+          const currentDate = new Date(year, month, date);
+          const daysDifference = Math.floor((currentDate - referenceDate) / (1000 * 60 * 60 * 24));
+          const pasaranDay = pasaran[(referencePasaran + daysDifference) % 5];
           const cellClass = j === 0 ? 'class="text-danger"' : '';
           html += `<td ${cellClass}>${date}<br><small>${pasaranDay}</small></td>`;
           date++;
