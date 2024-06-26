@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalender Pasaran Jawa</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-  <h1>Kalender Pasaran Jawa</h1>
-  <div class="control">
-    <label for="month">Bulan: </label>
-    <select id="month"></select>
-    <label for="year">Tahun: </label>
-    <select id="year"></select>
+    <h1 class="text-center my-4">Kalender Pasaran Jawa</h1>
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-3 mb-2">
+        <label for="month">Bulan: </label>
+        <select id="month" class="form-control"></select>
+      </div>
+      <div class="col-md-3 mb-2">
+        <label for="year">Tahun: </label>
+        <select id="year" class="form-control"></select>
+      </div>
+    </div>
+    <div id="calendar" class="table-responsive"></div>
   </div>
-  <div id="calendar"></div>
-  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="calendar.js"></script>
 </body>
 </html>

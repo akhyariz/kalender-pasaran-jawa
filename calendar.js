@@ -1,74 +1,76 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const pasaranDays = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
-  const monthSelect = document.getElementById('month');
-  const yearSelect = document.getElementById('year');
+document.addEventListener("DOMContentLoaded", function () {
+  const monthSelect = document.getElementById("month");
+  const yearSelect = document.getElementById("year");
+  const calendarDiv = document.getElementById("calendar");
 
-  function getPasaran(date) {
-    const baseDate = new Date(1900, 0, 1);
-    const msInDay = 24 * 60 * 60 * 1000;
-    const daysDifference = Math.floor((date - baseDate) / msInDay);
-    return pasaranDays[daysDifference % 5];
+  const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  const currentYear = new Date().getFullYear();
+
+  // Populate month and year dropdowns
+  months.forEach((month, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.text = month;
+    monthSelect.appendChild(option);
+  });
+
+  for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+    const option = document.createElement("option");
+    option.value = year;
+    option.text = year;
+    yearSelect.appendChild(option);
   }
 
-  function createCalendar(year, month) {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+  monthSelect.value = new Date().getMonth();
+  yearSelect.value = currentYear;
+
+  function generateCalendar(month, year) {
     const firstDay = new Date(year, month, 1).getDay();
-    const calendarDiv = document.getElementById('calendar');
-    let calendarHTML = '<table><tr>';
-    const daysOfWeek = ['Ahd', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
-    daysOfWeek.forEach(day => calendarHTML += `<th>${day}</th>`);
-    calendarHTML += '</tr><tr>';
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    for (let i = 0; i < firstDay; i++) {
-      calendarHTML += '<td></td>';
-    }
+    const pasaran = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
+    let html = `<table class="table table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>Ahad</th>
+                      <th>Senin</th>
+                      <th>Selasa</th>
+                      <th>Rabu</th>
+                      <th>Kamis</th>
+                      <th>Jumat</th>
+                      <th>Sabtu</th>
+                    </tr>
+                  </thead>
+                  <tbody>`;
 
-    for (let day = 1; day <= daysInMonth; day++) {
-      const date = new Date(year, month, day);
-      const pasaran = getPasaran(date);
-      calendarHTML += `<td>${day}<br>(${pasaran})</td>`;
-      if ((day + firstDay) % 7 === 0) {
-        calendarHTML += '</tr><tr>';
+    let date = 1;
+    for (let i = 0; i < 6; i++) {
+      html += "<tr>";
+      for (let j = 0; j < 7; j++) {
+        if (i === 0 && j < firstDay) {
+          html += "<td></td>";
+        } else if (date > daysInMonth) {
+          break;
+        } else {
+          const pasaranDay = pasaran[(date - 1) % 5];
+          html += `<td>${date}<br><small>${pasaranDay}</small></td>`;
+          date++;
+        }
       }
+      html += "</tr>";
     }
+    html += "</tbody></table>";
 
-    calendarHTML += '</tr></table>';
-    calendarDiv.innerHTML = calendarHTML;
+    calendarDiv.innerHTML = html;
   }
 
-  function populateMonthSelect() {
-    const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", 
-                        "Juli", "Augustus", "September", "Oktober", "November", "Desember"];
-    monthNames.forEach((month, index) => {
-      const option = document.createElement('option');
-      option.value = index;
-      option.text = month;
-      monthSelect.appendChild(option);
-    });
-  }
-
-  function populateYearSelect() {
-    const currentYear = new Date().getFullYear();
-    for (let i = currentYear - 5; i <= currentYear + 5; i++) {
-      const option = document.createElement('option');
-      option.value = i;
-      option.text = i;
-      yearSelect.appendChild(option);
-    }
-  }
-
-  monthSelect.addEventListener('change', function() {
-    createCalendar(yearSelect.value, monthSelect.value);
+  monthSelect.addEventListener("change", () => {
+    generateCalendar(parseInt(monthSelect.value), parseInt(yearSelect.value));
   });
 
-  yearSelect.addEventListener('change', function() {
-    createCalendar(yearSelect.value, monthSelect.value);
+  yearSelect.addEventListener("change", () => {
+    generateCalendar(parseInt(monthSelect.value), parseInt(yearSelect.value));
   });
 
-  const today = new Date();
-  populateMonthSelect();
-  populateYearSelect();
-  monthSelect.value = today.getMonth();
-  yearSelect.value = today.getFullYear();
-  createCalendar(today.getFullYear(), today.getMonth());
+  generateCalendar(new Date().getMonth(), new Date().getFullYear());
 });
