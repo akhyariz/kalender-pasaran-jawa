@@ -1,7 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -18,38 +14,12 @@ th {
   background-color: #f2f2f2;
 }
 
-.date {
-  font-size: 16px;
-}
-
-.pasaran {
-  font-size: 12px;
-  color: #888; /* Lighter color for Pasaran days */
-}
-
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   h1 {
     font-size: 24px;
   }
 
   th, td {
-    font-size: 12px; /* Base font size for table headers and cells */
     padding: 5px;
-  }
-
-  .date {
-    font-size: 12px; /* Adjusted font size for dates on mobile */
-  }
-
-  .pasaran {
-    font-size: 8px; /* Adjusted font size for Pasaran on mobile */
-  }
-
-  label {
-    font-size: 10px; /* Adjusted font size for labels */
-  }
-
-  select {
-    font-size: 10px; /* Adjusted font size for dropdowns */
   }
 }
